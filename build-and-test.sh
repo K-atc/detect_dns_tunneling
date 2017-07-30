@@ -41,7 +41,7 @@ if [ $MODE = "HEX_ENCODE" ]; then
     echo "[*] === [hex encoding] ==="
     if [ ! -e data/cano.txt ]; then
         echo "[*] Downloading text..."
-        curl -sk https://sherlock-holm.es/stories/plain-text/cano.txt -o data/cano.txt
+        curl -k https://sherlock-holm.es/stories/plain-text/cano.txt -o data/cano.txt
     fi
     cat data/cano.txt | fold -s10 | od -A n -t x1 | tr -d ' ' | sed -e 's/$/.campaign.evil.jp/' | head -n 100000 > data/dns-tunneling-hex.txt
     ./detect_dns_tunneling data/dns-tunneling-hex.txt N || exit
